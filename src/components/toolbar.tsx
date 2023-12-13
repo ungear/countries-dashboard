@@ -1,4 +1,4 @@
-export function Toolbar({setSearchTerm}){
+export function Toolbar({searchTerm, setSearchTerm}){
   function handleChange(e){
     const normalizedTerm = e.target.value.trim().toLowerCase();
     setSearchTerm(normalizedTerm);
@@ -6,7 +6,7 @@ export function Toolbar({setSearchTerm}){
   }
   return (
     <div>
-      <input type="text" onChange={handleChange}/>
+      <input type="text" onChange={handleChange} value={searchTerm}/>
     </div>
   )
 }

@@ -1,8 +1,8 @@
-export function History({searchHistory}){
+export function History({searchHistory, onHistoryClick}){
   return (
     <ul>
-      {searchHistory.map(x => (
-        <li key={x}>{x}</li>
+      {searchHistory.map(h => (
+        <li key={h.id} onClick={() => onHistoryClick(h)}>{h.val}</li>
       ))}
     </ul>
   )

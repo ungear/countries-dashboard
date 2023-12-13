@@ -14,6 +14,7 @@ const COUNTRIES = [
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
+  const [historyCounter, setHistoryCounter] = useState(0);
 
   const countriesToShow = COUNTRIES.filter(x => {
     return Object.values(x).some(f => f.toLowerCase().includes(searchTerm));
@@ -21,14 +22,25 @@ export default function Home() {
 
   function onSearchTermUpdate(val){
     setSearchTerm(val);
-    const newHistory = [...searchHistory, val];
+    if(val.trim().length > 0) pushHistoryItem(val);
+  }
+  function onHistoryClick(historyItem){
+    setSearchTerm(historyItem.val);
+  }
+  function pushHistoryItem(val){
+    const newHistoryItem = {
+      val,
+      id: historyCounter
+    };
+    setHistoryCounter(historyCounter + 1);
+    const newHistory = [...searchHistory, newHistoryItem];
     setSearchHistory(newHistory);
   }
   return (
     <section className={styles.main}>
-      <History searchHistory={searchHistory}></History>
+      <History searchHistory={searchHistory} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar setSearchTerm={onSearchTermUpdate}></Toolbar>
+        <Toolbar searchTerm={searchTerm} setSearchTerm={onSearchTermUpdate}></Toolbar>
         <CountriesGrid countries={countriesToShow}></CountriesGrid>
       </div>
     </section>
