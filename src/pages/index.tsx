@@ -16,6 +16,7 @@ function historyReducer(history, action){
       const newCounter = history.counter + 1;
       const newItem = {
         value: action.value,
+        resultsNumber: action.resultsNumber,
         id: newCounter
       };
       return {
@@ -30,32 +31,36 @@ function historyReducer(history, action){
 }
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedId, setSelectedId] = useState(0);
+  const [countriesToShow, setCountriesToShow] = useState(COUNTRIES);
+  const [selectedId, setSelectedId] = useState(0); // needed to reset Toolbar's state when history item clicked
   const [history, dispatchHistory] = useReducer(historyReducer, { items: [], counter: 0});
 
-  const countriesToShow = COUNTRIES.filter(x => {
-    return Object.values(x).some(f => f.toLowerCase().includes(searchTerm));
-  })
 
-  function onSearchTermUpdate(val){
+  function applySearch(val, shouldAddToHistory = true){
     setSearchTerm(val);
-    if(val.trim().length > 0) pushHistoryItem(val);
+    const filteredCountries = COUNTRIES.filter(x => {
+      return Object.values(x).some(f => f.toLowerCase().includes(val));
+    })
+    setCountriesToShow(filteredCountries);
+    if(shouldAddToHistory)
+      pushHistoryItem(val, filteredCountries.length);
   }
   function onHistoryClick(historyItem){
-    setSearchTerm(historyItem.value);
+    applySearch(historyItem.value, false);
     setSelectedId(historyItem.id)
   }
-  function pushHistoryItem(value){
+  function pushHistoryItem(value, resultsNumber){
     dispatchHistory({
       type: 'added',
       value,
+      resultsNumber,
     })
   }
   return (
     <section className={styles.main}>
       <History searchHistory={history.items} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar searchTerm={searchTerm} setSearchTerm={onSearchTermUpdate} key={selectedId}></Toolbar>
+        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} key={selectedId}></Toolbar>
         <CountriesGrid countries={countriesToShow}></CountriesGrid>
       </div>
     </section>
