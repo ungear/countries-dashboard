@@ -32,7 +32,6 @@ function historyReducer(history, action){
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [countriesToShow, setCountriesToShow] = useState(COUNTRIES);
-  const [selectedId, setSelectedId] = useState(0); // needed to reset Toolbar's state when history item clicked
   const [history, dispatchHistory] = useReducer(historyReducer, { items: [], counter: 0});
 
 
@@ -47,7 +46,6 @@ export default function Home() {
   }
   function onHistoryClick(historyItem){
     applySearch(historyItem.value, false);
-    setSelectedId(historyItem.id)
   }
   function pushHistoryItem(value, resultsNumber){
     dispatchHistory({
@@ -60,7 +58,7 @@ export default function Home() {
     <section className={styles.main}>
       <History searchHistory={history.items} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} key={selectedId}></Toolbar>
+        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} key={searchTerm}></Toolbar>
         <CountriesGrid countries={countriesToShow}></CountriesGrid>
       </div>
     </section>
