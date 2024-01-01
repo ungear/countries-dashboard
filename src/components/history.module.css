@@ -1,4 +1,7 @@
-.history{}
+.history{
+  list-style: none;
+  padding-left: 0px;
+}
 
 .history__item{
 }
