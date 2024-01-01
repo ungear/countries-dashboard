@@ -1,10 +1,11 @@
 import styles from '@/styles/CountriesGrid.module.css'
+import { capitalizeFirstLetter } from "../utils/utils";
 
 export function CountriesGrid({countries, columns}){
   const head = (
     <thead>
       <tr>
-        {columns.map(x => <th key={x.name}>{x.name}</th>)}
+        {columns.map(x => <th key={x.name}>{capitalizeFirstLetter(x.name)}</th>)}
       </tr>
     </thead>
   )
@@ -24,3 +25,4 @@ export function CountriesGrid({countries, columns}){
     </table>
   )
 }
+

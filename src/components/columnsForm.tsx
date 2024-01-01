@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { capitalizeFirstLetter } from "../utils/utils";
 
 export function ColumnsForm({columns, onChange}){
   const [columnsState, setColumns] = useState(columns);
@@ -20,7 +21,7 @@ export function ColumnsForm({columns, onChange}){
             id={x.name} 
             onChange={(e) => {handleChange(x.name, e.target.checked)}}/>
           <label className="form-check-label" htmlFor={x.name}>
-            {x.name}
+            {capitalizeFirstLetter(x.name)}
           </label>
         </div>
       )}
