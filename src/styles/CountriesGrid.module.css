@@ -1,3 +1,10 @@
 .countriesGrid{
 
 }
+.countriesGrid thead{
+  background: #ccc;
+}
+
+.countriesGrid td{
+  padding: 2px 5px;
+}

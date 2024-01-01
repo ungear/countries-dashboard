@@ -6,6 +6,9 @@ export function CountriesGrid({countries}){
       <tr>
         <td>Name</td>
         <td>Capital</td>
+        <td>Continent</td>
+        <td>Population</td>
+        <td>Currency</td>
       </tr>
     </thead>
   )
@@ -14,6 +17,9 @@ export function CountriesGrid({countries}){
       <tr key={x.name}>
         <td>{x.name}</td>
         <td>{x.capital}</td>
+        <td>{x.continent}</td>
+        <td>{x.population}</td>
+        <td>{x.currency}</td>
       </tr>
     )
   })

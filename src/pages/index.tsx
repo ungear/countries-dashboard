@@ -7,8 +7,9 @@ import { CountriesGrid } from '../components/countriesGrid'
 import { useState, useReducer } from 'react'
 
 const COUNTRIES = [
-  { name: 'Russia', capital: 'Moscow' },
-  { name: 'Georgia', capital: 'Tbilisi' },
+  { name: 'Russia', capital: 'Moscow', continent: 'Eurasia', population: 143, currency: 'Ruble (₽)' },
+  { name: 'Georgia', capital: 'Tbilisi', continent: 'Eurasia', population: 3, currency: 'Georgian lari (₾)' },
+  { name: 'USA', capital: 'Washington', continent: 'North America', population: 330, currency: 'U.S. dollar ($)' },
 ];
 function historyReducer(history, action){
   switch(action.type){
@@ -38,7 +39,7 @@ export default function Home() {
   function applySearch(val, shouldAddToHistory = true){
     setSearchTerm(val);
     const filteredCountries = COUNTRIES.filter(x => {
-      return Object.values(x).some(f => f.toLowerCase().includes(val));
+      return Object.values(x).some(f => f.toString().toLowerCase().includes(val));
     })
     setCountriesToShow(filteredCountries);
     if(shouldAddToHistory)
