@@ -34,7 +34,8 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [countriesToShow, setCountriesToShow] = useState(COUNTRIES);
   const [history, dispatchHistory] = useReducer(historyReducer, { items: [], counter: 0});
-
+  const columnsStartState = Object.keys(COUNTRIES[0]).map(x => ({ name: x, isActive: true}))
+  const [columns, setColumns] = useState(columnsStartState);
 
   function applySearch(val, shouldAddToHistory = true){
     setSearchTerm(val);
@@ -59,12 +60,22 @@ export default function Home() {
     setSearchTerm('');
     applySearch('', false);
   }
+  function handleColumnsChange(cols){
+    setColumns([...cols]);
+  }
   return (
     <section className={styles.main}>
       <History searchHistory={history.items} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} reset={handleReset}></Toolbar>
-        <CountriesGrid countries={countriesToShow}></CountriesGrid>
+        <Toolbar 
+          searchTerm={searchTerm} 
+          setSearchTerm={applySearch} 
+          reset={handleReset} 
+          columns={columns}
+          onColumnsChange={handleColumnsChange}></Toolbar>
+        <CountriesGrid 
+          columns={columns.filter(x => x.isActive)}
+          countries={countriesToShow}></CountriesGrid>
       </div>
     </section>
   )
