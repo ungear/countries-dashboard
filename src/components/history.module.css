@@ -1,0 +1,10 @@
+.history{}
+
+.history__item{
+}
+
+.history__term{
+  cursor: pointer;
+  border-bottom: 2px solid black;
+  margin-right: 10px;
+}
