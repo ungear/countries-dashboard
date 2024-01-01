@@ -58,7 +58,7 @@ export default function Home() {
     <section className={styles.main}>
       <History searchHistory={history.items} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} key={searchTerm}></Toolbar>
+        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch}></Toolbar>
         <CountriesGrid countries={countriesToShow}></CountriesGrid>
       </div>
     </section>

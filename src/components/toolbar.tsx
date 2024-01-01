@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export function Toolbar({searchTerm, setSearchTerm}){
   const [term, setTerm] = useState(searchTerm);
+  useEffect(() => {
+    setTerm(searchTerm);
+  }, [searchTerm])
+
   function handleSearchClick(){
     const normalizedTerm = term.trim().toLowerCase();
     setSearchTerm(normalizedTerm);
