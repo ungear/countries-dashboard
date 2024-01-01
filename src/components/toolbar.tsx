@@ -20,11 +20,11 @@ export function Toolbar({searchTerm, setSearchTerm, reset}){
   return (
     <form className="row g-3" onSubmit={handleSubmit}>
       <div className="col-auto">
-        <input className="form-control" type="text" onChange={handeChangeTerm} value={term}/>
+        <input className="form-control form-control-sm" type="text" onChange={handeChangeTerm} value={term}/>
       </div>
       <div className="col-auto">
-        <button type="submit" className="btn btn-primary me-1">Search</button>
-        <button type="button" className="btn btn-warning"onClick={handleResetClick}>Reset</button>
+        <button type="submit" className="btn btn-primary btn-sm me-1">Search</button>
+        <button type="button" className="btn btn-warning btn-sm "onClick={handleResetClick}>Reset</button>
       </div>
     </form>
   )

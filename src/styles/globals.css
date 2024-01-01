@@ -94,9 +94,6 @@ a {
   text-decoration: none;
 }
 
-.pointer{
-  cursor: pointer;
-}
 
 @media (prefers-color-scheme: dark) {
   html {
