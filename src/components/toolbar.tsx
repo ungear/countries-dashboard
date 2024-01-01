@@ -35,10 +35,14 @@ export function Toolbar({searchTerm, setSearchTerm, reset, columns, onColumnsCha
         <div className="col-auto">
           <input className="form-control form-control-sm" type="text" onChange={handeChangeTerm} value={term}/>
         </div>
-        <div className="col-auto">
-          <button type="submit" className="btn btn-primary btn-sm me-1">Search</button>
-          <button type="button" className="btn btn-warning btn-sm" onClick={handleResetClick}>Reset</button>
-          <button type="button" className="btn btn-warning btn-sm" onClick={handleOpenPopup}>Popup</button>
+        <div className="col-auto d-flex flex-grow-1 justify-content-between">
+          <div>
+            <button type="submit" className="btn btn-primary btn-sm me-1">Search</button>
+            <button type="button" className="btn btn-warning btn-sm" onClick={handleResetClick}>Reset</button>
+          </div>
+          <div>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={handleOpenPopup}>Settings</button>
+          </div>
         </div>
       </form>
       {isPopupEnabled && 
