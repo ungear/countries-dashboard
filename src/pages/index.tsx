@@ -55,11 +55,15 @@ export default function Home() {
       resultsNumber,
     })
   }
+  function handleReset(){
+    setSearchTerm('');
+    applySearch('', false);
+  }
   return (
     <section className={styles.main}>
       <History searchHistory={history.items} onHistoryClick={onHistoryClick}></History>
       <div>
-        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch}></Toolbar>
+        <Toolbar searchTerm={searchTerm} setSearchTerm={applySearch} reset={handleReset}></Toolbar>
         <CountriesGrid countries={countriesToShow}></CountriesGrid>
       </div>
     </section>

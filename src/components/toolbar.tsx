@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function Toolbar({searchTerm, setSearchTerm}){
+export function Toolbar({searchTerm, setSearchTerm, reset}){
   const [term, setTerm] = useState(searchTerm);
   useEffect(() => {
     setTerm(searchTerm);
@@ -13,9 +13,14 @@ export function Toolbar({searchTerm, setSearchTerm}){
   function handeChangeTerm(e){
     setTerm(e.target.value);
   }
+  function handleResetClick(){
+    reset();
+  }
   return (
     <div>
-      <input type="text" onChange={handeChangeTerm} value={term}/><button onClick={handleSearchClick}>Search</button>
+      <input type="text" onChange={handeChangeTerm} value={term}/>
+      <button onClick={handleSearchClick}>Search</button>
+      <button onClick={handleResetClick}>Reset</button>
     </div>
   )
 }
