@@ -11,13 +11,13 @@ export default function Layout({ children }) {
       </Head>
       <Header />
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }
 
 function Header(){
-  return <header>header</header>
+  return <header className="p-2 fs-5">Countries Dashbard</header>
 }
 
 function Footer(){

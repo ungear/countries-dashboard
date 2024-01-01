@@ -94,6 +94,10 @@ a {
   text-decoration: none;
 }
 
+header{
+  height: 50px;
+  background:#feb272;
+}
 
 @media (prefers-color-scheme: dark) {
   html {

@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import { Toolbar } from '../components/toolbar'
 import { History } from '../components/history'
@@ -10,6 +8,8 @@ const COUNTRIES = [
   { name: 'Russia', capital: 'Moscow', continent: 'Eurasia', population: 143, currency: 'Ruble (₽)' },
   { name: 'Georgia', capital: 'Tbilisi', continent: 'Eurasia', population: 3, currency: 'Georgian lari (₾)' },
   { name: 'USA', capital: 'Washington', continent: 'North America', population: 330, currency: 'U.S. dollar ($)' },
+  { name: 'Argentina', capital: 'Buenos Aires', continent: 'South America', population: 47, currency: 'Argentine peso ($)' },
+  { name: 'China', capital: 'Pekin', continent: 'Eurasia', population: 1411, currency: 'Yuan (¥)' },
 ];
 function historyReducer(history, action){
   switch(action.type){
