@@ -6,9 +6,10 @@ export function Toolbar({searchTerm, setSearchTerm, reset}){
     setTerm(searchTerm);
   }, [searchTerm])
 
-  function handleSearchClick(){
+  function handleSubmit(e){
     const normalizedTerm = term.trim().toLowerCase();
     setSearchTerm(normalizedTerm);
+    e.preventDefault();
   }
   function handeChangeTerm(e){
     setTerm(e.target.value);
@@ -17,10 +18,14 @@ export function Toolbar({searchTerm, setSearchTerm, reset}){
     reset();
   }
   return (
-    <div>
-      <input type="text" onChange={handeChangeTerm} value={term}/>
-      <button onClick={handleSearchClick}>Search</button>
-      <button onClick={handleResetClick}>Reset</button>
-    </div>
+    <form className="row g-3" onSubmit={handleSubmit}>
+      <div className="col-auto">
+        <input className="form-control" type="text" onChange={handeChangeTerm} value={term}/>
+      </div>
+      <div className="col-auto">
+        <button type="submit" className="btn btn-primary me-1">Search</button>
+        <button type="button" className="btn btn-warning"onClick={handleResetClick}>Reset</button>
+      </div>
+    </form>
   )
 }

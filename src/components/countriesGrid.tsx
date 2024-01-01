@@ -4,11 +4,11 @@ export function CountriesGrid({countries}){
   const head = (
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Capital</td>
-        <td>Continent</td>
-        <td>Population</td>
-        <td>Currency</td>
+        <th>Name</th>
+        <th>Capital</th>
+        <th>Continent</th>
+        <th>Population</th>
+        <th>Currency</th>
       </tr>
     </thead>
   )
@@ -24,7 +24,7 @@ export function CountriesGrid({countries}){
     )
   })
   return (
-    <table className={styles.countriesGrid}>
+    <table className={styles.countriesGrid + " table table-striped"}>
       {head}
       <tbody>
         {rows}
