@@ -31,7 +31,6 @@ function historyReducer(history, action){
   }
 }
 export default function Home() {
-  console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID)
   const [searchTerm, setSearchTerm] = useState('');
   const [countriesToShow, setCountriesToShow] = useState([]);
   const [history, dispatchHistory] = useReducer(historyReducer, { items: [], counter: 0});
